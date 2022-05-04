@@ -25,7 +25,11 @@ const Tabbutton = styled.button`
   color: white;
   font-size: 2rem;
   border-radius: 0.5rem;
-  
+`
+const Input = styled.input`
+  width: 300px;
+  height: 2rem;
+  font-size: 1rem
 `
 
 function App() {
@@ -93,6 +97,11 @@ function App() {
     <Tabbox>
       <Tabbutton onClick={()=>selectTab(0)}>할일목록</Tabbutton>
       <Tabbutton onClick={()=>selectTab(1)}>완료한목록</Tabbutton>
+    </Tabbox>
+    <Tabbox>
+      <Input placeholder="중요도 0~2" type="text"/>
+      <Input placeholder="할일" type="text"/>
+      <button>할일등록</button>
     </Tabbox>
     <div>
       {tab === 0 ? <Todolist tododata={tododata} changeTododata={changeTododata}></Todolist> : <Completelist completedata={completedata} changeCompletedata={changeCompletedata} ></Completelist>}
