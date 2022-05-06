@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 const Div = styled.div`
@@ -21,11 +22,10 @@ const Td = styled.td`
 `
 
 function Completelist(props){
-    const array = props.completedata
-    console.log(array, '완료목록')
-    const changeCompletedata = props.changeCompletedata;
+    const {completedata, changeCompletedata, todoSort, importanceSort, dateSort} = {...props};
+    const Sortparam = 'complete'
 
-    const Complete = array.map((item)=>(
+    const Complete = completedata.map((item)=>(
         <tr key={item.id}>
             <Td>{item.importance}</Td>
             <Td>{item.todo}</Td>
@@ -40,9 +40,9 @@ function Completelist(props){
             <Table>
                 <tbody>
                     <tr>
-                        <Th>중요도</Th>
-                        <Th>할일</Th>
-                        <Th>완료한 날짜</Th>
+                        <Th>중요도<button onClick={()=>importanceSort(Sortparam)}>중요도정렬</button></Th>
+                        <Th>할일<button onClick={()=>todoSort(Sortparam)}>할일정렬</button></Th>
+                        <Th>생성한 날짜<button onClick={()=>dateSort(Sortparam)}>날짜정렬</button></Th>
                     </tr>
                     {Complete}
                 </tbody>
