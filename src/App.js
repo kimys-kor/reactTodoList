@@ -36,10 +36,13 @@ const Input = styled.input`
 function App() {
   const [tab, setTab] = useState(0)
 
+  // 이 부분은 컴포넌트 상태값이 바뀔 때 마다 실행됩니다. useMemo나 컴포넌트 밖으로 빼시는건 어떨까요?
   const reversedata = []
   for(let i=alldata.length-1; i >= 0; i--) {
     reversedata.push(alldata[i]);
   }
+  //
+
 
   const [dummydata, Setdummydata] = useState(reversedata)
 
